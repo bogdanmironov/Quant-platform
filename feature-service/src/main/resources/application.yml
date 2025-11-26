@@ -1,5 +1,21 @@
 server:
   port: 8081
+
 spring:
   application:
     name: feature-service
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: feature-service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+app:
+  kafka:
+    topics:
+      raw: raw-prices
+      features: features-prices
+    groups:
+      feature: feature-service
