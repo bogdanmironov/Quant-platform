@@ -3,5 +3,6 @@ package bg.mironov.bogdan.quant.signalEngine.model;
 public record TradingSignal (
     String symbol,
     double price,
-    String signal
+    String signal,
+    long timestamp
 ) {}

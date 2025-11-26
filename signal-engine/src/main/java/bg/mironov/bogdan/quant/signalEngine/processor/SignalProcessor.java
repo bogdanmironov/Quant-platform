@@ -24,7 +24,7 @@ public class SignalProcessor {
             signal = "HOLD";
         }
 
-        TradingSignal out = new TradingSignal(feature.symbol(), feature.price(), signal);
+        TradingSignal out = new TradingSignal(feature.symbol(), feature.price(), signal, System.currentTimeMillis());
 
         producer.send(out);
     }

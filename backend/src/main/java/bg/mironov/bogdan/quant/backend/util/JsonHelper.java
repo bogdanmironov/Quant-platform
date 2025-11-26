@@ -1,4 +1,4 @@
-package bg.mironov.bogdan.quant.signalEngine.util.util;
+package bg.mironov.bogdan.quant.backend.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
