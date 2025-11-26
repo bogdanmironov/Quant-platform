@@ -1,5 +1,19 @@
 server:
   port: 8083
+
 spring:
   application:
     name: signal-engine
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: signal-engine
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+app:
+  kafka:
+    topics:
+      features: features-prices
+      signals: signals-out
