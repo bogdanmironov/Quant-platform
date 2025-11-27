@@ -38,10 +38,27 @@ A React frontend can later be added to visualize the indexed data.
 - Spring Boot 3  
 - Kafka (Confluent images)  
 - OpenSearch 2.x
-- 
 ### Deployment / Infrastructure
 - Docker Compose for Kafka, Zookeeper, OpenSearch, Dashboards  
 
+---
+
+## Architecture
+```mermaid
+flowchart TD
+    A["External Market API | (Binance)"]
+    B["Ingestor | Service"]
+    C["Feature | Service"]
+    D["Signal | Engine"]
+    E["OpenSearch"]
+    F["Backend | API"]
+
+    A --> B
+    B -->|raw-prices| C
+    C -->|features-prices| D
+    D -->|signals-out| E
+    E --> F
+```
 ---
 
 ## Running the System
