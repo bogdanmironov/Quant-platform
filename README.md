@@ -46,18 +46,36 @@ A React frontend can later be added to visualize the indexed data.
 ## Architecture
 ```mermaid
 flowchart TD
-    A["External Market API | (Binance)"]
-    B["Ingestor | Service"]
-    C["Feature | Service"]
-    D["Signal | Engine"]
-    E["OpenSearch"]
-    F["Backend | API"]
 
-    A --> B
-    B -->|raw-prices| C
-    C -->|features-prices| D
-    D -->|signals-out| E
-    E --> F
+    %% External price source
+    M["External Market API (Binance)"]
+
+    %% Services
+    I["Ingestor Service"]
+    F["Feature Service"]
+    S["Signal Engine"]
+    B["Backend API"]
+
+    %% Kafka topics
+    K1["Kafka topic: raw-prices"]
+    K2["Kafka topic: features-prices"]
+    K3["Kafka topic: signals-out"]
+
+    %% Storage + UI
+    OS["OpenSearch"]
+    FE["Frontend (React, etc.)"]
+
+    %% Flow
+    M --> I
+    I --> K1
+    K1 --> F
+    F --> K2
+    K2 --> S
+    S --> K3
+    K3 --> B
+    B --> OS
+    OS --> B
+    B --> FE
 ```
 ---
 
